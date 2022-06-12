@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="setter" class="list half">
+        <div class="1">vlevovzad</div>
+        <div class="2">vzad</div>
+        <div class="3">vpravovzad</div>
+        <div class="4">doleva</div>
+        <div class="5">stop</div>
+        <div class="6">doprava</div>
+        <div class="7">dolevavpred</div>
+        <div class="8">vpred</div>
+        <div class="9">dopravavpred</div>
+        <div class="l">zatoc doleva</div>
+        <div class="r">zatoc doprava</div>
+    </div>
+    
+    <div class="list half">
+        <div class=";">start</div>
+        <div id="container" >
+        
+
+        </div>
+    <input type="button" onclick="count_()" value = "Count">
+    <p id="p1"></p>
+    </div>
+    
+
+    <script src="NodeList.js"></script>
+    <script src="Sortable.min.js"></script>
+    <script>
+        let example4Left = document.getElementById('setter')
+                    let example4Right = document.getElementById('container')
+            
+                      new Sortable(example4Left, {
+                          group: {
+                              name: 'shared',
+                              pull: 'clone',
+                              put: false // Do not allow items to be put into this list
+                          },
+                          animation: 150,
+                          sort: false // To disable sorting: set sort to false
+                      });
+                      
+                      new Sortable(example4Right, {
+                          group: 'shared',
+                          animation: 150
+                      });
+    
+        
+    
+        function count_()
+        {
+            let s = "";
+            let nodes = $$('#container').children;
+            let l = nodes.length;
+            for(let i = 0; i < l; i++)
+            {
+                s += nodes[i].className; 
+            }
+            document.getElementById("p1").innerHTML = s;
+        }
+    </script>
+</body>
+</html>
