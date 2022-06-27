@@ -6,6 +6,14 @@
     background-color: orange;
 }
 
+#header {
+    text-align: center;
+}
+
+#header label{
+    font-size: 5vh;
+}
+
 .nested {
     padding: 4px 0;
     border: 1px dotted #bbb;
@@ -49,5 +57,11 @@
     width: 20%;
     height: 10%;
     background-color: darkkhaki;
+    align-items: center;
+    display: flex;
 }
 
+#send label{
+    margin:0 auto;
+    font-size: 5vh;
+}
