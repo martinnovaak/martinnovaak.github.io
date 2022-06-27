@@ -41,7 +41,7 @@ var sendbutton = document.getElementById("send");
 sendbutton.addEventListener("click", function count_()
 {
     let s = "";
-    let nodes = document.getElementById('container');//$$('.container')//.children;
+    let nodes = document.getElementById('cont');//$$('.container')//.children;
     s += rec(nodes);
     document.getElementById("par").innerHTML = s;
 });
