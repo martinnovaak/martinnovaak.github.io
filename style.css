@@ -6,7 +6,7 @@
     background-color: orange;
 }
 
-#header {
+#header, #cont {
     text-align: center;
 }
 
@@ -48,7 +48,9 @@
 #cont div{
     border: 2px solid;
     padding: 3vh;
+    font-size: 3vh;
 }
+
 
 #send{
     position: fixed;
