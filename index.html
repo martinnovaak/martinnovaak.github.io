@@ -12,8 +12,8 @@
 
     .container {
         position: absolute;
-        left: 32.5%;
-        width: 60%;
+        left: 22.5%;
+        width: 70%;
         margin: 0 auto;
         background-color: #818181;
     }
@@ -66,7 +66,7 @@
     /* The sidebar menu */
     .sidenav {
         height: 100%; /* Full-height: remove this if you want "auto" height */
-        width: 30%; /* Set the width of the sidebar */
+        width: 20%; /* Set the width of the sidebar */
         position: fixed; /* Fixed Sidebar (stay in place on scroll) */
         z-index: 1; /* Stay on top */
         top: 0; /* Stay at the top */
@@ -83,10 +83,26 @@
     /* The navigation menu links */
     .sidenav a {
         padding: 0px 0px 0px 0px;
-        text-decoration: none;  
-        font-size: 3vw;
+        text-decoration: none;
+        font-size: 2vw;
         color: #818181;
         display: block;
+    }
+
+    @media (orientation: portrait) {
+        .sidenav {
+            width: 30%;
+        }
+        .sidenav a {
+            font-size: 3vw;
+        }
+        .container {
+            position: absolute;
+            left: 32.5%;
+            width: 60%;
+            margin: 0 auto;
+            background-color: #818181;
+        }
     }
 
     /* When you mouse over the navigation links, change their color */
