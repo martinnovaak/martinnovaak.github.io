@@ -1,0 +1,53 @@
+#container {
+    position: absolute;
+    left: 22.5%;
+    width: 70%;
+    margin: 0 auto;
+    background-color: orange;
+}
+
+.nested {
+    padding: 4px 0;
+    border: 1px dotted #bbb;
+    background-color: orange;
+}
+
+.item{
+    background-color: blueviolet;
+}
+
+.p {
+    background-color: green;
+}
+
+.q{
+    background-color: darkgreen;
+}
+
+.stop{
+    background-color: crimson;
+}
+
+.t {
+    background-color: dodgerblue;
+}
+
+.s {
+    background-color: dimgray;
+}
+
+
+#cont div{
+    border: 2px solid;
+    padding: 3vh;
+}
+
+#send{
+    position: fixed;
+    bottom: 0;
+    left: 45%;
+    width: 20%;
+    height: 10%;
+    background-color: darkkhaki;
+}
+
