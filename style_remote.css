@@ -204,7 +204,7 @@ html,body {
   }
 
   #element {
-    top: 0px;
+    top: 0;
     left: 20%;
     height: 25%;
     width: 60%;
