@@ -136,7 +136,7 @@ html,body {
   top: 5%;
 }
 
-@media (max-width:800px) or (orientation: portrait) {
+@media (orientation: portrait) {
   .image{
     width: 100%;
   }
