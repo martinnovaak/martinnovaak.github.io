@@ -6,8 +6,9 @@ makeResizable(element,10,10)
 dragElement(document.getElementById("up_left"), document.getElementById("up_left_handler"));
 makeResizable(document.getElementById("up_left"));
 
-dragElement(document.getElementById("up"), document.getElementById("up_handler"));
-makeResizable(document.getElementById("up"));
+up = document.getElementById("up");
+dragElement(up, document.getElementById("up_handler"));
+makeResizable(up);
 
 dragElement(document.getElementById("up_right"), document.getElementById("up_right_handler"));
 makeResizable(document.getElementById("up_right"));
@@ -41,3 +42,32 @@ makeResizable(document.getElementById("speed_up"));
 
 dragElement(document.getElementById("speed_down"), document.getElementById("speed_down_handler"));
 makeResizable(document.getElementById("speed_down"));
+
+function ajax(data)
+{
+    let http = new XMLHttpRequest();
+    http.open('GET',  data);
+    http.send();
+}
+
+function sendCommand(element, command)
+{
+    element.parentNode.style.backgroundColor = "red";
+    if (command === 11)
+        ajax("l");
+    else if (command === 12)
+        ajax("r");
+    else
+        ajax(command);
+}
+
+function stop(element, num=0)
+{
+    if (num === 1)
+        element.parentNode.style.backgroundColor = "blue";
+    else if (num === 2)
+        element.parentNode.style.backgroundColor = "orange";
+    else
+        element.parentNode.style.backgroundColor = "green";
+    ajax(5);
+}
