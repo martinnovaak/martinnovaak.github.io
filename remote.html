@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style_remote.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="element" >
+        <div id="elementheader"><img src="robot.png" width="100%" height="100%"></div>
+        <div></div>     
+    </div>
+
+    <div id="up_left" class="btn"><div id="up_left_handler" class="handler"></div><img class="image" src="icons/up_left.png"> </div>
+    <div id="up" class="btn"><div id="up_handler" class="handler"></div><img class="image" src="icons/up.png"></div>
+    <div id="up_right" class="btn"><div id="up_right_handler" class="handler"></div><img class="image" src="icons/up_right.png"></div>
+
+    <div id="left" class="btn"><div id="left_handler" class="handler"></div><img class="image" src="icons/left.png"> </div>
+    <div id="stop" class="btn"><div id="stop_handler" class="handler"></div><img class="image" src="icons/stop.png"></div>
+    <div id="right" class="btn"><div id="right_handler" class="handler"></div><img class="image" src="icons/right.png"></div>
+
+    <div id="down_left" class="btn"><div id="down_left_handler" class="handler"></div><img class="image" src="icons/down_left.png"> </div>
+    <div id="down" class="btn"><div id="down_handler" class="handler"></div><img class="image" src="icons/down.png"></div>
+    <div id="down_right" class="btn"><div id="down_right_handler" class="handler"></div><img class="image" src="icons/down_right.png"></div>
+
+    <div id="rotate_left" class="btn"><div id="rotate_left_handler" class="handler"></div><img class="image" src="icons/rotate-left.png"> </div>
+    <div id="rotate_right" class="btn"><div id="rotate_right_handler" class="handler"></div><img class="image" src="icons/rotate-right.png"></div>
+
+    <div id="speed_down" class="btn"><div id="speed_down_handler" class="handler"></div><img class="image" src="icons/minus.png"> </div>
+    <div id="speed_up" class="btn"><div id="speed_up_handler" class="handler"></div><img class="image" src="icons/plus.png"></div>
+
+    <script src="drag.js"></script>
+    <script src="resize.js"></script>
+    <script>
+        element = document.getElementById("element")
+        handler = document.getElementById("elementheader")
+        dragElement(element, handler);
+        makeResizable(element,10,10)
+
+        dragElement(document.getElementById("up_left"), document.getElementById("up_left_handler"));
+        makeResizable(document.getElementById("up_left"));
+
+        dragElement(document.getElementById("up"), document.getElementById("up_handler"));
+        makeResizable(document.getElementById("up"));
+
+        dragElement(document.getElementById("up_right"), document.getElementById("up_right_handler"));
+        makeResizable(document.getElementById("up_right"));
+
+        dragElement(document.getElementById("left"), document.getElementById("left_handler"));
+        makeResizable(document.getElementById("left"));
+
+        dragElement(document.getElementById("stop"), document.getElementById("stop_handler"));
+        makeResizable(document.getElementById("stop"));
+
+        dragElement(document.getElementById("right"), document.getElementById("right_handler"));
+        makeResizable(document.getElementById("right"));
+
+        dragElement(document.getElementById("down_left"), document.getElementById("down_left_handler"));
+        makeResizable(document.getElementById("down_left"));
+
+        dragElement(document.getElementById("down"), document.getElementById("down_handler"));
+        makeResizable(document.getElementById("down"));
+
+        dragElement(document.getElementById("down_right"), document.getElementById("down_right_handler"));
+        makeResizable(document.getElementById("down_right"));
+    </script>
+</body>
+</html>
