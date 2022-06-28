@@ -210,19 +210,19 @@ html,body {
   }
 
   #speed_down {
-    width: 12%;
+    width: 14%;
     height: 10%;
     top: 10%;
-    left: 5%;
+    left: 4%;
     background-color: orange;
     border-radius: 50%;
   }
 
   #speed_up {
-    width: 12%;
+    width: 14%;
     height: 10%;
     top: 10%;
-    left: 83%;
+    left: 84%;
     background-color: orange;
     border-radius: 50%;
   }
