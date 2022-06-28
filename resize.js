@@ -1,4 +1,4 @@
-function makeResizable(element, minW = 100, minH = 100, size = 20)
+function makeResizable(element, minW = 10, minH = 10, size = 20)
 {
     const top = document.createElement('div');
     top.style.width = '100%';
