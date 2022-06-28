@@ -12,23 +12,23 @@
         <div id="elementheader"><img src="robot.png" width="100%" height="100%"></div>
     </div>
 
-    <div id="up_left" class="btn"><div id="up_left_handler" class="handler"></div><div onmousedown="sendCommand(this,7)" onmouseup="stop(this)" class="clickarea"></div><img class="image" src="icons/up_left.png"> </div>
-    <div id="up" class="btn"><div id="up_handler" class="handler"></div><div onmousedown="sendCommand(this,8)" onmouseup="stop(this)" id="upclick" class="clickarea"> </div><img  class="image" src="icons/up.png"></div>
-    <div id="up_right" class="btn"><div id="up_right_handler" class="handler"></div><div onmousedown="sendCommand(this,9)" onmouseup="stop(this)" id="uprightclick" class="clickarea"></div><img class="image" src="icons/up_right.png"></div>
+    <div id="up_left" class="btn"><div id="up_left_handler" class="handler"></div><img class="image" src="icons/up_left.png"><div onmousedown="sendCommand(this,7)" onmouseup="stop(this)" class="clickarea"></div> </div>
+    <div id="up" class="btn"><div id="up_handler" class="handler"></div><img  class="image" src="icons/up.png"><div onmousedown="sendCommand(this,8)" onmouseup="stop(this)" id="upclick" class="clickarea"> </div></div>
+    <div id="up_right" class="btn"><div id="up_right_handler" class="handler"></div><img class="image" src="icons/up_right.png"><div onmousedown="sendCommand(this,9)" onmouseup="stop(this)" id="uprightclick" class="clickarea"></div></div>
 
-    <div id="left" class="btn"><div id="left_handler" class="handler"></div><div onmousedown="sendCommand(this,4)" onmouseup="stop(this)" id="leftclick" class="clickarea"></div><img class="image" src="icons/left.png"> </div>
-    <div id="stop" class="btn"><div id="stop_handler" class="handler"></div><div onmousedown="sendCommand(this,5)" onmouseup="stop(this)" id="stopclick" class="clickarea"></div><img class="image" src="icons/stop.png"></div>
-    <div id="right" class="btn"><div id="right_handler" class="handler"></div><div onmousedown="sendCommand(this,6)" onmouseup="stop(this)" id="rightclick" class="clickarea"></div><img class="image" src="icons/right.png"></div>
+    <div id="left" class="btn"><div id="left_handler" class="handler"></div><img class="image" src="icons/left.png"><div onmousedown="sendCommand(this,4)" onmouseup="stop(this)" id="leftclick" class="clickarea"></div> </div>
+    <div id="stop" class="btn"><div id="stop_handler" class="handler"></div><img class="image" src="icons/stop.png"><div onmousedown="sendCommand(this,5)" onmouseup="stop(this)" id="stopclick" class="clickarea"></div></div>
+    <div id="right" class="btn"><div id="right_handler" class="handler"></div><img class="image" src="icons/right.png"><div onmousedown="sendCommand(this,6)" onmouseup="stop(this)" id="rightclick" class="clickarea"></div></div>
 
-    <div id="down_left" class="btn"><div id="down_left_handler" class="handler"></div><div onmousedown="sendCommand(this,1)" onmouseup="stop(this)" id="downleftclick" class="clickarea"></div><img class="image" src="icons/down_left.png"> </div>
-    <div id="down" class="btn"><div id="down_handler" class="handler"></div><div onmousedown="sendCommand(this,2)" onmouseup="stop(this)" id="downclick" class="clickarea"></div><img class="image" src="icons/down.png"></div>
-    <div id="down_right" class="btn"><div id="down_right_handler" class="handler"></div><div onmousedown="sendCommand(this,3)" onmouseup="stop(this)" id="downrightclick" class="clickarea"></div><img class="image" src="icons/down_right.png"></div>
+    <div id="down_left" class="btn"><div id="down_left_handler" class="handler"></div><img class="image" src="icons/down_left.png"><div onmousedown="sendCommand(this,1)" onmouseup="stop(this)" id="downleftclick" class="clickarea"></div> </div>
+    <div id="down" class="btn"><div id="down_handler" class="handler"></div><img class="image" src="icons/down.png"><div onmousedown="sendCommand(this,2)" onmouseup="stop(this)" id="downclick" class="clickarea"></div></div>
+    <div id="down_right" class="btn"><div id="down_right_handler" class="handler"></div><img class="image" src="icons/down_right.png"><div onmousedown="sendCommand(this,3)" onmouseup="stop(this)" id="downrightclick" class="clickarea"></div></div>
 
-    <div id="rotate_left" class="btn"><div id="rotate_left_handler" class="handler"></div><div onmousedown="sendCommand(this,11)" onmouseup="stop(this,1)" id="rotateleftclick" class="clickarea"></div><img class="image" src="icons/rotate-left.png"> </div>
-    <div id="rotate_right" class="btn"><div id="rotate_right_handler" class="handler"></div><div onmousedown="sendCommand(this,12)" onmouseup="stop(this,1)" id="rotaterightclick" class="clickarea"></div><img class="image" src="icons/rotate-right.png"></div>
+    <div id="rotate_left" class="btn"><div id="rotate_left_handler" class="handler"></div><img class="image" src="icons/rotate-left.png"><div onmousedown="sendCommand(this,11)" onmouseup="stop(this,1)" id="rotateleftclick" class="clickarea"></div> </div>
+    <div id="rotate_right" class="btn"><div id="rotate_right_handler" class="handler"></div><img class="image" src="icons/rotate-right.png"><div onmousedown="sendCommand(this,12)" onmouseup="stop(this,1)" id="rotaterightclick" class="clickarea"></div></div>
 
-    <div id="speed_down" class="btn"><div id="speed_down_handler" class="handler"></div><div onmousedown="this.parentNode.style.backgroundColor='red'" onmouseup="this.parentNode.style.backgroundColor='orange'" onclick="ajax('m')" id="minusclick" class="clickarea"></div><img class="image" src="icons/minus.png"> </div>
-    <div id="speed_up" class="btn"><div id="speed_up_handler" class="handler"></div><div onmousedown="this.parentNode.style.backgroundColor='red'" onmouseup="this.parentNode.style.backgroundColor='orange'" onclick="ajax('n')" class="clickarea"></div><img class="image" src="icons/plus.png"></div>
+    <div id="speed_down" class="btn"><div id="speed_down_handler" class="handler"></div><img class="image" src="icons/minus.png"><div onmousedown="this.parentNode.style.backgroundColor='red'" onmouseup="this.parentNode.style.backgroundColor='orange'" onclick="ajax('m')" id="minusclick" class="clickarea"></div> </div>
+    <div id="speed_up" class="btn"><div id="speed_up_handler" class="handler"></div><img class="image" src="icons/plus.png"><div onmousedown="this.parentNode.style.backgroundColor='red'" onmouseup="this.parentNode.style.backgroundColor='orange'" onclick="ajax('n')" class="clickarea"></div></div>
 
     <script src="drag.js"></script>
     <script src="resize.js"></script>
