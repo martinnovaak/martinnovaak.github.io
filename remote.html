@@ -20,7 +20,7 @@
     <div id="up" class="btn">
         <div id="up_handler" class="handler"></div>
         <img  class="image" src="icons/up.png">
-        <div  class="clickarea"> </div></div>
+        <div id="upclick" class="clickarea"> </div></div>
     <div id="up_right" class="btn">
         <div id="up_right_handler" class="handler"></div>
         <img class="image" src="icons/up_right.png">
@@ -86,10 +86,10 @@
     <script src="remote.js"></script>
     <script src="hammer.js"></script>
     <script>
-        var elem = document.getElementById("up");
+        var upclick = document.getElementById("upclick");
         var text = document.getElementById("text");
-        Hammer(elem).on("press",function (event){sendCommand(this,8)});
-        Hammer(elem).on("pressup", stop(this));
+        Hammer(elem).on("press",function (event){sendCommand(upclick,8); text.innerHTML = "UP";});
+        Hammer(elem).on("pressup", stop(upclick));
     </script>
 </body>
 </html>
