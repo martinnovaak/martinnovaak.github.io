@@ -65,8 +65,10 @@ function stop(element, num)
 {
     if (num === 1)
         element.parentNode.style.backgroundColor = "blue";
-    else if (num === 2)
+    else if (num === 2) {
         element.parentNode.style.backgroundColor = "orange";
+        return;
+    }
     else
         element.parentNode.style.backgroundColor = "green";
     ajax(5);

@@ -56,35 +56,35 @@
     <div id="down_right" class="btn">
         <div id="down_right_handler" class="handler"></div>
         <img class="image" src="icons/down_right.png">
-        <div id="downright" class="clickarea"></div>
+        <div id="downrightclick" class="clickarea"></div>
     </div>
 
     <div id="rotate_left" class="btn">
         <div id="rotate_left_handler" class="handler"></div>
         <img class="image" src="icons/rotate-left.png">
-        <div onmousedown="sendCommand(this,11)" onmouseup="stop(this,1)" touchstart="sendCommand(this,11)" touchend="stop(this,1)" class="clickarea"></div>
+        <div id="rotateleftclick" class="clickarea"></div>
     </div>
     <div id="rotate_right" class="btn">
         <div id="rotate_right_handler" class="handler"></div>
         <img class="image" src="icons/rotate-right.png">
-        <div onmousedown="sendCommand(this,12)" onmouseup="stop(this,1)" touchstart="sendCommand(this,12)" touchend="stop(this,1)" class="clickarea"></div>
+        <div id="rotaterightclick" class="clickarea"></div>
     </div>
 
     <div id="speed_down" class="btn">
         <div id="speed_down_handler" class="handler"></div>
         <img class="image" src="icons/minus.png">
-        <div onmousedown="this.parentNode.style.backgroundColor='red'" onmouseup="this.parentNode.style.backgroundColor='orange'" onclick="ajax('m')" touchstart="this.parentNode.style.backgroundColor='red'" touchend="this.parentNode.style.backgroundColor='orange'" id="minusclick" class="clickarea"></div>
+        <div id="speeddownclick" id="minusclick" class="clickarea"></div>
     </div>
     <div id="speed_up" class="btn">
         <div id="speed_up_handler" class="handler"></div>
         <img class="image" src="icons/plus.png">
-        <div onmousedown="this.parentNode.style.backgroundColor='red'" onmouseup="this.parentNode.style.backgroundColor='orange'" onclick="ajax('n')" touchstart="this.parentNode.style.backgroundColor='red'" touchend="this.parentNode.style.backgroundColor='orange'" class="clickarea"></div>
+        <div  id="speedupclick" class="clickarea"></div>
     </div>
 
     <script src="drag.js"></script>
     <script src="resize.js"></script>
     <script src="remote.js"></script>
-    <script src="hammer.js"></script>
+    <script src="hammer.min.js"></script>
     <script>
 
         upclick = document.getElementById("upclick");
@@ -96,54 +96,87 @@
         downleftclick = document.getElementById("downleftclick");
         downclick = document.getElementById("downclick");
         downrightclick = document.getElementById("downrightclick");
-        var text = document.getElementById("text");
-        Hammer(upclick).on("press pressup",function (event){
+        rotateleftclick = document.getElementById("rotateleftclick");
+        rotaterightclick = document.getElementById("rotaterightclick");
+        speedupclick = document.getElementById("speedupclick");
+        speeddownclick = document.getElementById("speeddownclick");
+        Hammer(upclick).on("press pressup panend",function (event){
             if (event.type === "press")
-                sendCommand(upclick,8)
+                sendCommand(upclick,8);
             else
                 stop(upclick,0);
         });
-        Hammer(upleftclick).on("press pressup",function (event){
+        Hammer(upleftclick).on("press pressup panend",function (event){
             if (event.type === "press")
                 sendCommand(upleftclick,7)
             else
                 stop(upleftclick,0);
         });
-        Hammer(uprightclick).on("press pressup",function (event){
+        Hammer(uprightclick).on("press pressup panend",function (event){
             if (event.type === "press")
                 sendCommand(uprightclick,9)
             else
                 stop(uprightclick);
         });
-        Hammer(leftclick).on("press pressup",function (event){
+        Hammer(leftclick).on("press pressup panend",function (event){
             if (event.type === "press")
                 sendCommand(leftclick,4)
             else
                 stop(leftclick,0);
         });
-        Hammer(stopclick).on("press pressup",function (event){
+        Hammer(stopclick).on("press pressup panend",function (event){
             if (event.type === "press")
                 sendCommand(stopclick,5)
             else
                 stop(stopclick,0);
         });
-        Hammer(downclick).on("press pressup",function (event){
+        Hammer(rightclick).on("press pressup panend",function (event){
+            if (event.type === "press")
+                sendCommand(rightclick,6)
+            else
+                stop(rightclick,0);
+        });
+        Hammer(downclick).on("press pressup panend",function (event){
             if (event.type === "press")
                 sendCommand(downclick,2)
             else
                 stop(downclick,0);
         });
-        Hammer(downleftclick).on("press pressup",function (event){
+        Hammer(downleftclick).on("press pressup panend",function (event){
             if (event.type === "press")
                 sendCommand(downleftclick,1)
             else
                 stop(downleftclick,0);
         });
-        Hammer(downrightclick).on("press pressup",function (event){
+        Hammer(downrightclick).on("press pressup panend",function (event){
             if (event.type === "press")
                 sendCommand(downrightclick,3)
             else
                 stop(downrightclick,0);
+        });
+        Hammer(rotaterightclick).on("press pressup panend",function (event){
+            if (event.type === "press")
+                sendCommand(rotaterightclick,"r")
+            else
+                stop(rotaterightclick,1);
+        });
+        Hammer(rotateleftclick).on("press pressup panend",function (event){
+            if (event.type === "press")
+                sendCommand(rotateleftclick,"l")
+            else
+                stop(rotateleftclick,1);
+        });
+        Hammer(speedupclick).on("press pressup panend",function (event){
+            if (event.type === "press")
+                sendCommand(speedupclick,"m")
+            else
+                stop(speedupclick,2);
+        });
+        Hammer(speeddownclick).on("press pressup panend",function (event){
+            if (event.type === "press")
+                sendCommand(speeddownclick,"n")
+            else
+                stop(speeddownclick,2);
         });
     </script>
 </body>
