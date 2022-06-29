@@ -61,7 +61,7 @@ function sendCommand(element, command)
         ajax(command);
 }
 
-function stop(element, num=0)
+function stop(element, num)
 {
     if (num === 1)
         element.parentNode.style.backgroundColor = "blue";

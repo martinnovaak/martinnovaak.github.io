@@ -15,7 +15,7 @@
     <div id="up_left" class="btn">
         <div id="up_left_handler" class="handler"></div>
         <img class="image" src="icons/up_left.png">
-        <div touchstart="sendCommand(this,7)" touchend="stop(this)"  class="clickarea"></div>
+        <div id="upleftclick"  class="clickarea"></div>
     </div>
     <div id="up" class="btn">
         <div id="up_handler" class="handler"></div>
@@ -24,39 +24,39 @@
     <div id="up_right" class="btn">
         <div id="up_right_handler" class="handler"></div>
         <img class="image" src="icons/up_right.png">
-        <div onmousedown="sendCommand(this,9)" onmouseup="stop(this)" touchstart="sendCommand(this,9)" touchend="stop(this)" class="clickarea"></div>
+        <div id="uprightclick" class="clickarea"></div>
     </div>
 
     <div id="left" class="btn">
         <div id="left_handler" class="handler"></div>
         <img class="image" src="icons/left.png">
-        <div onmousedown="sendCommand(this,4)" onmouseup="stop(this)" touchstart="sendCommand(this,4)" touchend="stop(this)" class="clickarea"></div>
+        <div id="leftclick" class="clickarea"></div>
     </div>
     <div id="stop" class="btn">
         <div id="stop_handler" class="handler"></div>
         <img class="image" src="icons/stop.png">
-        <div onmousedown="sendCommand(this,5)" onmouseup="stop(this)" touchstart="sendCommand(this,5)" touchend="stop(this)" class="clickarea"></div>
+        <div id="stopclick" class="clickarea"></div>
     </div>
     <div id="right" class="btn">
         <div id="right_handler" class="handler"></div>
         <img class="image" src="icons/right.png">
-        <div onmousedown="sendCommand(this,6)" onmouseup="stop(this)" touchstart="sendCommand(this,6)" touchend="stop(this)" class="clickarea"></div>
+        <div id="rightclick" class="clickarea"></div>
     </div>
 
     <div id="down_left" class="btn">
         <div id="down_left_handler" class="handler"></div>
         <img class="image" src="icons/down_left.png">
-        <div onmousedown="sendCommand(this,1)" onmouseup="stop(this)" touchstart="sendCommand(this,1)" touchend="stop(this)" class="clickarea"></div>
+        <div id="downleftclick" class="clickarea"></div>
     </div>
     <div id="down" class="btn">
         <div id="down_handler" class="handler"></div>
         <img class="image" src="icons/down.png">
-        <div onmousedown="sendCommand(this,2)" onmouseup="stop(this)" touchstart="sendCommand(this,2)" touchend="stop(this)" class="clickarea"></div>
+        <div id="downclick" class="clickarea"></div>
     </div>
     <div id="down_right" class="btn">
         <div id="down_right_handler" class="handler"></div>
         <img class="image" src="icons/down_right.png">
-        <div onmousedown="sendCommand(this,3)" onmouseup="stop(this)" touchstart="sendCommand(this,3)" touchend="stop(this)" class="clickarea"></div>
+        <div id="downright" class="clickarea"></div>
     </div>
 
     <div id="rotate_left" class="btn">
@@ -86,10 +86,65 @@
     <script src="remote.js"></script>
     <script src="hammer.js"></script>
     <script>
-        var upclick = document.getElementById("upclick");
+
+        upclick = document.getElementById("upclick");
+        upleftclick = document.getElementById("upleftclick");
+        uprightclick = document.getElementById("uprightclick");
+        leftclick = document.getElementById("leftclick");
+        stopclick = document.getElementById("stopclick");
+        rightclick = document.getElementById("rightclick");
+        downleftclick = document.getElementById("downleftclick");
+        downclick = document.getElementById("downclick");
+        downrightclick = document.getElementById("downrightclick");
         var text = document.getElementById("text");
-        Hammer(elem).on("press",function (event){sendCommand(upclick,8); text.innerHTML = "UP";});
-        Hammer(elem).on("pressup", stop(upclick));
+        Hammer(upclick).on("press pressup",function (event){
+            if (event.type === "press")
+                sendCommand(upclick,8)
+            else
+                stop(upclick,0);
+        });
+        Hammer(upleftclick).on("press pressup",function (event){
+            if (event.type === "press")
+                sendCommand(upleftclick,7)
+            else
+                stop(upleftclick,0);
+        });
+        Hammer(uprightclick).on("press pressup",function (event){
+            if (event.type === "press")
+                sendCommand(uprightclick,9)
+            else
+                stop(uprightclick);
+        });
+        Hammer(leftclick).on("press pressup",function (event){
+            if (event.type === "press")
+                sendCommand(leftclick,4)
+            else
+                stop(leftclick,0);
+        });
+        Hammer(stopclick).on("press pressup",function (event){
+            if (event.type === "press")
+                sendCommand(stopclick,5)
+            else
+                stop(stopclick,0);
+        });
+        Hammer(downclick).on("press pressup",function (event){
+            if (event.type === "press")
+                sendCommand(downclick,2)
+            else
+                stop(downclick,0);
+        });
+        Hammer(downleftclick).on("press pressup",function (event){
+            if (event.type === "press")
+                sendCommand(downleftclick,1)
+            else
+                stop(downleftclick,0);
+        });
+        Hammer(downrightclick).on("press pressup",function (event){
+            if (event.type === "press")
+                sendCommand(downrightclick,3)
+            else
+                stop(downrightclick,0);
+        });
     </script>
 </body>
 </html>

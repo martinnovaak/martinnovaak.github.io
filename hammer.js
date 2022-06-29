@@ -1878,7 +1878,7 @@ inherit(PressRecognizer, Recognizer, {
     defaults: {
         event: 'press',
         pointers: 1,
-        time: 251, // minimal time of the pointer to be pressed
+        time: 100, // minimal time of the pointer to be pressed
         threshold: 9 // a minimal movement is ok, but keep it low
     },
 
