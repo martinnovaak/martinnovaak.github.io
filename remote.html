@@ -87,7 +87,8 @@
     <script src="hammer.js"></script>
     <script>
         var elem = document.getElementById("up");
-        Hammer(elem).on("press",sendCommand(this,8));
+        var text = document.getElementById("text");
+        Hammer(elem).on("press",function (event){alert("PRESS!");});
         Hammer(elem).on("pressup", stop(this));
     </script>
 </body>
