@@ -15,12 +15,12 @@
     <div id="up_left" class="btn">
         <div id="up_left_handler" class="handler"></div>
         <img class="image" src="icons/up_left.png">
-        <div onmousedown="sendCommand(this,7)" onmouseup="stop(this)" touchstart="sendCommand(this,7)" touchend="stop(this)"  class="clickarea"></div>
+        <div touchstart="sendCommand(this,7)" touchend="stop(this)"  class="clickarea"></div>
     </div>
     <div id="up" class="btn">
         <div id="up_handler" class="handler"></div>
         <img  class="image" src="icons/up.png">
-        <div onmousedown="sendCommand(this,8)" onmouseup="stop(this)" touchstart="sendCommand(this,8)" touchend="stop(this)" class="clickarea"> </div></div>
+        <div onmousedown="sendCommand(this,8)" onmouseup="stop(this)" class="clickarea"> </div></div>
     <div id="up_right" class="btn">
         <div id="up_right_handler" class="handler"></div>
         <img class="image" src="icons/up_right.png">
@@ -84,5 +84,11 @@
     <script src="drag.js"></script>
     <script src="resize.js"></script>
     <script src="remote.js"></script>
+    <script src="hammer.js"></script>
+    <script>
+        var elem = document.getElementById("up");
+        Hammer(elem).on("press",sendCommand(this,8));
+        Hammer(elem).on("pressup", stop(this));
+    </script>
 </body>
 </html>
