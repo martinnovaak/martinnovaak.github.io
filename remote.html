@@ -11,23 +11,20 @@
     <div id="element" >
         <div id="elementheader"><img src="robot.png" width="100%" height="100%"></div>
     </div>
-
     <div id="up_left" class="btn">
         <div id="up_left_handler" class="handler"></div>
-        <div id="upleftclick"  class="clickarea"></div>
         <img class="image" src="icons/up_left.png">
-
+        <div id="upleftclick"  class="clickarea"></div>
     </div>
     <div id="up" class="btn">
         <div id="up_handler" class="handler"></div>
-        <div id="upclick" class="clickarea"> </div>
         <img  class="image" id="imidz" src="icons/up.png">
+        <div id="upclick" class="clickarea"> </div>
     </div>
     <div id="up_right" class="btn">
         <div id="up_right_handler" class="handler"></div>
-        <div id="uprightclick" class="clickarea"></div>
         <img class="image" src="icons/up_right.png">
-
+        <div id="uprightclick" class="clickarea"></div>
     </div>
 
     <div id="left" class="btn">
@@ -109,12 +106,16 @@
             else
                 stop(upclick,0);
         });
-        Hammer(upleftclick).on("press pressup panend",function (event){
+        /*Hammer(upleftclick).on("press pressup panend",function (event){
             if (event.type === "press")
                 sendCommand(upleftclick,7)
             else
                 stop(upleftclick,0);
-        });
+        });*/
+        upleftclick.addEventListener("touchstart", function(){sendCommand(upleftclick,7)});
+        upleftclick.addEventListener("touchend", function(){stop(upleftclick,0)});
+        upleftclick.addEventListener("mousedown", function(){sendCommand(upleftclick,7)});
+        upleftclick.addEventListener("mouseup", function(){stop(upleftclick,0)});
         Hammer(uprightclick).on("press pressup panend",function (event){
             if (event.type === "press")
                 sendCommand(uprightclick,9)
