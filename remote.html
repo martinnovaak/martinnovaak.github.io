@@ -100,88 +100,73 @@
         rotaterightclick = document.getElementById("rotaterightclick");
         speedupclick = document.getElementById("speedupclick");
         speeddownclick = document.getElementById("speeddownclick");
-        Hammer(upclick).on("press pressup panend",function (event){
-            if (event.type === "press")
-                sendCommand(upclick,8);
-            else
-                stop(upclick,0);
-        });
-        /*Hammer(upleftclick).on("press pressup panend",function (event){
-            if (event.type === "press")
-                sendCommand(upleftclick,7)
-            else
-                stop(upleftclick,0);
-        });*/
+
+        upclick.addEventListener("touchstart", function(){sendCommand(upclick,8)});
+        upclick.addEventListener("touchend", function(){stop(upclick,0)});
+        upclick.addEventListener("mousedown", function(){sendCommand(upclick,8)});
+        upclick.addEventListener("mouseup", function(){stop(upclick,0)});
+
         upleftclick.addEventListener("touchstart", function(){sendCommand(upleftclick,7)});
         upleftclick.addEventListener("touchend", function(){stop(upleftclick,0)});
         upleftclick.addEventListener("mousedown", function(){sendCommand(upleftclick,7)});
         upleftclick.addEventListener("mouseup", function(){stop(upleftclick,0)});
-        Hammer(uprightclick).on("press pressup panend",function (event){
-            if (event.type === "press")
-                sendCommand(uprightclick,9)
-            else
-                stop(uprightclick);
-        });
-        Hammer(leftclick).on("press pressup panend",function (event){
-            if (event.type === "press")
-                sendCommand(leftclick,4)
-            else
-                stop(leftclick,0);
-        });
-        Hammer(stopclick).on("press pressup panend",function (event){
-            if (event.type === "press")
-                sendCommand(stopclick,5)
-            else
-                stop(stopclick,0);
-        });
-        Hammer(rightclick).on("press pressup panend",function (event){
-            if (event.type === "press")
-                sendCommand(rightclick,6)
-            else
-                stop(rightclick,0);
-        });
-        Hammer(downclick).on("press pressup panend",function (event){
-            if (event.type === "press")
-                sendCommand(downclick,2)
-            else
-                stop(downclick,0);
-        });
-        Hammer(downleftclick).on("press pressup panend",function (event){
-            if (event.type === "press")
-                sendCommand(downleftclick,1)
-            else
-                stop(downleftclick,0);
-        });
-        Hammer(downrightclick).on("press pressup panend",function (event){
-            if (event.type === "press")
-                sendCommand(downrightclick,3)
-            else
-                stop(downrightclick,0);
-        });
-        Hammer(rotaterightclick).on("press pressup panend",function (event){
-            if (event.type === "press")
-                sendCommand(rotaterightclick,"r")
-            else
-                stop(rotaterightclick,1);
-        });
-        Hammer(rotateleftclick).on("press pressup panend",function (event){
-            if (event.type === "press")
-                sendCommand(rotateleftclick,"l")
-            else
-                stop(rotateleftclick,1);
-        });
-        Hammer(speedupclick).on("press pressup panend",function (event){
-            if (event.type === "press")
-                sendCommand(speedupclick,"m")
-            else
-                stop(speedupclick,2);
-        });
-        Hammer(speeddownclick).on("press pressup panend",function (event){
-            if (event.type === "press")
-                sendCommand(speeddownclick,"n")
-            else
-                stop(speeddownclick,2);
-        });
+
+        uprightclick.addEventListener("touchstart", function(){sendCommand(uprightclick,9)});
+        uprightclick.addEventListener("touchend", function(){stop(uprightclick,0)});
+        uprightclick.addEventListener("mousedown", function(){sendCommand(uprightclick,9)});
+        uprightclick.addEventListener("mouseup", function(){stop(uprightclick,0)});
+
+
+        leftclick.addEventListener("touchstart", function(){sendCommand(leftclick,4)});
+        leftclick.addEventListener("touchend", function(){stop(leftclick,0)});
+        leftclick.addEventListener("mousedown", function(){sendCommand(leftclick,4)});
+        leftclick.addEventListener("mouseup", function(){stop(leftclick,0)});
+
+        stopclick.addEventListener("touchstart", function(){sendCommand(stopclick,5)});
+        stopclick.addEventListener("touchend", function(){stop(stopclick,0)});
+        stopclick.addEventListener("mousedown", function(){sendCommand(stopclick,5)});
+        stopclick.addEventListener("mouseup", function(){stop(stopclick,0)});
+
+        rightclick.addEventListener("touchstart", function(){sendCommand(rightclick,6)});
+        rightclick.addEventListener("touchend", function(){stop(rightclick,0)});
+        rightclick.addEventListener("mousedown", function(){sendCommand(rightclick,6)});
+        rightclick.addEventListener("mouseup", function(){stop(rightclick,0)});
+
+        downleftclick.addEventListener("touchstart", function(){sendCommand(downleftclick,1)});
+        downleftclick.addEventListener("touchend", function(){stop(downleftclick,0)});
+        downleftclick.addEventListener("mousedown", function(){sendCommand(downleftclick,1)});
+        downleftclick.addEventListener("mouseup", function(){stop(downleftclick,0)});
+
+        downclick.addEventListener("touchstart", function(){sendCommand(downclick,2)});
+        downclick.addEventListener("touchend", function(){stop(downclick,0)});
+        downclick.addEventListener("mousedown", function(){sendCommand(downclick,2)});
+        downclick.addEventListener("mouseup", function(){stop(downclick,0)});
+
+        downrightclick.addEventListener("touchstart", function(){sendCommand(downrightclick,3)});
+        downrightclick.addEventListener("touchend", function(){stop(downrightclick,0)});
+        downrightclick.addEventListener("mousedown", function(){sendCommand(downrightclick,3)});
+        downrightclick.addEventListener("mouseup", function(){stop(downrightclick,0)});
+
+        rotaterightclick.addEventListener("touchstart", function(){sendCommand(rotaterightclick,"r")});
+        rotaterightclick.addEventListener("touchend", function(){stop(rotaterightclick,0)});
+        rotaterightclick.addEventListener("mousedown", function(){sendCommand(rotaterightclick,"r")});
+        rotaterightclick.addEventListener("mouseup", function(){stop(rotaterightclick,0)});
+
+        rotateleftclick.addEventListener("touchstart", function(){sendCommand(rotateleftclick,"l")});
+        rotateleftclick.addEventListener("touchend", function(){stop(rotateleftclick,0)});
+        rotateleftclick.addEventListener("mousedown", function(){sendCommand(rotateleftclick,"l")});
+        rotateleftclick.addEventListener("mouseup", function(){stop(rotateleftclick,0)});
+
+        speedupclick.addEventListener("touchstart", function(){sendCommand(speedupclick,"m")});
+        speedupclick.addEventListener("touchend", function(){stop(speedupclick,0)});
+        speedupclick.addEventListener("mousedown", function(){sendCommand(speedupclick,"m")});
+        speedupclick.addEventListener("mouseup", function(){stop(speedupclick,0)});
+
+        speeddownclick.addEventListener("touchstart", function(){sendCommand(speeddownclick,"n")});
+        speeddownclick.addEventListener("touchend", function(){stop(speeddownclick,0)});
+        speeddownclick.addEventListener("mousedown", function(){sendCommand(speeddownclick,"n")});
+        speeddownclick.addEventListener("mouseup", function(){stop(speeddownclick,0)});
+
 
         function absorbEvent_(event) {
             var e = event || window.event;
