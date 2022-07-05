@@ -30,6 +30,7 @@
 }
 
 html,body {
+  overscroll-behavior: contain;
   height: 100%;
   font-size: 1rem;
   background-color: lightgrey;
