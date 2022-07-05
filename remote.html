@@ -175,6 +175,7 @@
 
         downrightclick.addEventListener("touchstart", function(){sendCommand(downrightclick,3)});
         downrightclick.addEventListener("touchend", function(){stop(downrightclick,0)});
+        downrightclick.addEventListener("touchcancel", function(){stop(downrightclick,0)});
         downrightclick.addEventListener("mousedown", function(){sendCommand(downrightclick,3)});
         downrightclick.addEventListener("mouseup", function(){stop(downrightclick,0)});
 
