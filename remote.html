@@ -148,50 +148,30 @@
         downrightclick.addEventListener("mouseup", function(){stop(downrightclick,0)});
 
         rotaterightclick.addEventListener("touchstart", function(){sendCommand(rotaterightclick,"r")});
-        rotaterightclick.addEventListener("touchend", function(){stop(rotaterightclick,0)});
+        rotaterightclick.addEventListener("touchend", function(){stop(rotaterightclick,1)});
         rotaterightclick.addEventListener("mousedown", function(){sendCommand(rotaterightclick,"r")});
-        rotaterightclick.addEventListener("mouseup", function(){stop(rotaterightclick,0)});
+        rotaterightclick.addEventListener("mouseup", function(){stop(rotaterightclick,1)});
 
         rotateleftclick.addEventListener("touchstart", function(){sendCommand(rotateleftclick,"l")});
-        rotateleftclick.addEventListener("touchend", function(){stop(rotateleftclick,0)});
+        rotateleftclick.addEventListener("touchend", function(){stop(rotateleftclick,1)});
         rotateleftclick.addEventListener("mousedown", function(){sendCommand(rotateleftclick,"l")});
-        rotateleftclick.addEventListener("mouseup", function(){stop(rotateleftclick,0)});
+        rotateleftclick.addEventListener("mouseup", function(){stop(rotateleftclick,1)});
 
         speedupclick.addEventListener("touchstart", function(){sendCommand(speedupclick,"m")});
-        speedupclick.addEventListener("touchend", function(){stop(speedupclick,0)});
+        speedupclick.addEventListener("touchend", function(){stop(speedupclick,2)});
         speedupclick.addEventListener("mousedown", function(){sendCommand(speedupclick,"m")});
-        speedupclick.addEventListener("mouseup", function(){stop(speedupclick,0)});
+        speedupclick.addEventListener("mouseup", function(){stop(speedupclick,2)});
 
         speeddownclick.addEventListener("touchstart", function(){sendCommand(speeddownclick,"n")});
-        speeddownclick.addEventListener("touchend", function(){stop(speeddownclick,0)});
+        speeddownclick.addEventListener("touchend", function(){stop(speeddownclick,2)});
         speeddownclick.addEventListener("mousedown", function(){sendCommand(speeddownclick,"n")});
-        speeddownclick.addEventListener("mouseup", function(){stop(speeddownclick,0)});
+        speeddownclick.addEventListener("mouseup", function(){stop(speeddownclick,2)});
 
-
-        function init() {
-            onLongPress(document.getElementById('imidz'));
-        }
-
-        function onLongPress(node) {
-            node.ontouchstart = nullEvent;
-            node.ontouchend = nullEvent;
-            node.ontouchcancel = nullEvent;
-            node.ontouchmove = nullEvent;
-        }
-
-        function nullEvent(event) {
-            var e = event || window.event;
-            e.preventDefault && e.preventDefault();
-            e.stopPropagation && e.stopPropagation();
-            e.cancelBubble = true;
-            e.returnValue = false;
+        window.oncontextmenu = function(event) {
+            event.preventDefault();
+            event.stopPropagation();
             return false;
-        }
-
-        $(document).on('contextmenu', function (e) {
-            // stop long touch hold from poping up context menus
-            return false;
-        });
+        };
 
     </script>
 </body>
