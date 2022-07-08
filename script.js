@@ -7,80 +7,6 @@ function setupDragula(){
 
 setupDragula();
 
-function rec(element)
-{
-    let s = "";
-    let nodes = element.children;
-    for (let i = 0; i < nodes.length; i++)
-    {
-        if(nodes[i].className === "nested")
-        {
-            let pom = rec(nodes[i]);
-            if (pom !== "") {
-                s += "{";
-                s += rec(nodes[i]);
-                s += "}";
-            }
-        }
-        else if(nodes[i].className === "num")
-        {
-            s += nodes[i].value;
-        }
-        else if(nodes[i].className === "for")
-        {
-            s += 'i';
-            s += rec(nodes[i]);
-        }
-        else if(nodes[i].className === "while")
-        {
-            s += 'i';
-            s += rec(nodes[i]);
-        }
-        else if(nodes[i].className === "if")
-        {
-            s += "x";
-            s += rec(nodes[i]);
-        }
-        else if(nodes[i].className === "sel")
-        {
-            switch (nodes[i].value)
-            {
-                case "obstacle":
-                    s+="y";
-                    break;
-                case "north":
-                    s+="s";
-                    break;
-                case "south":
-                    s+="f";
-                    break;
-                case "west":
-                    s+="a";
-                    break;
-                case "east":
-                    s+="d";
-                    break;
-            }
-        }
-        else
-        {
-            s += nodes[i].className[0];
-        }
-    }
-    return s;
-}
-
-let sendbutton = document.getElementById("send");
-
-sendbutton.addEventListener("click", function count_()
-{
-    let s = "";
-    let nodes = document.getElementById('cont');
-    s += rec(nodes);
-    //window.location = s;
-    document.getElementById("bar").innerHTML = s;
-});
-
 let cont = document.getElementById("cont");
 
 let deletebutton = document.getElementById("delete")
@@ -169,6 +95,80 @@ function addNested(num)
     cont.innerHTML += elem;
     setupDragula();
 }
+
+function rec(element)
+{
+    let s = "";
+    let nodes = element.children;
+    for (let i = 0; i < nodes.length; i++)
+    {
+        if(nodes[i].className === "nested")
+        {
+            let pom = rec(nodes[i]);
+            if (pom !== "") {
+                s += "{";
+                s += rec(nodes[i]);
+                s += "}";
+            }
+        }
+        else if(nodes[i].className === "num")
+        {
+            s += nodes[i].value;
+        }
+        else if(nodes[i].className === "for")
+        {
+            s += 'i';
+            s += rec(nodes[i]);
+        }
+        else if(nodes[i].className === "while")
+        {
+            s += 'i';
+            s += rec(nodes[i]);
+        }
+        else if(nodes[i].className === "if")
+        {
+            s += "x";
+            s += rec(nodes[i]);
+        }
+        else if(nodes[i].className === "sel")
+        {
+            switch (nodes[i].value)
+            {
+                case "obstacle":
+                    s+="y";
+                    break;
+                case "north":
+                    s+="s";
+                    break;
+                case "south":
+                    s+="f";
+                    break;
+                case "west":
+                    s+="a";
+                    break;
+                case "east":
+                    s+="d";
+                    break;
+            }
+        }
+        else
+        {
+            s += nodes[i].className[0];
+        }
+    }
+    return s;
+}
+
+let sendbutton = document.getElementById("send");
+
+sendbutton.addEventListener("click", function count_()
+{
+    let s = "";
+    let nodes = document.getElementById('cont');
+    s += rec(nodes);
+    //window.location = s;
+    document.getElementById("bar").innerHTML = s;
+});
 
 function hideAndShow(num)
 {
