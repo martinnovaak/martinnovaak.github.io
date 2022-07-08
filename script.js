@@ -26,27 +26,68 @@ function rec(element)
         {
             s += nodes[i].value;
         }
-        else
-            s += nodes[i].className[0]
-        if (nodes[i].className === "item")
+        else if(nodes[i].className === "for")
         {
+            s += 'i';
             s += rec(nodes[i]);
+        }
+        else if(nodes[i].className === "while")
+        {
+            s += 'i';
+            s += rec(nodes[i]);
+        }
+        else if(nodes[i].className === "if")
+        {
+            s += "x";
+            s += rec(nodes[i]);
+        }
+        else if(nodes[i].className === "sel")
+        {
+            switch (nodes[i].value)
+            {
+                case "obstacle":
+                    s+="y";
+                    break;
+                case "north":
+                    s+="s";
+                    break;
+                case "south":
+                    s+="f";
+                    break;
+                case "west":
+                    s+="a";
+                    break;
+                case "east":
+                    s+="d";
+                    break;
+            }
+        }
+        else
+        {
+            s += nodes[i].className[0];
         }
     }
     return s;
 }
 
-var sendbutton = document.getElementById("send");
+let sendbutton = document.getElementById("send");
 
 sendbutton.addEventListener("click", function count_()
 {
     let s = "";
-    let nodes = document.getElementById('cont');//$$('.container')//.children;
+    let nodes = document.getElementById('cont');
     s += rec(nodes);
-    document.getElementById("par").innerHTML = s;
+    //window.location = s;
+    document.getElementById("bar").innerHTML = s;
 });
 
 let cont = document.getElementById("cont");
+
+let deletebutton = document.getElementById("delete")
+
+deletebutton.addEventListener("click", function() {
+    cont.innerHTML = '';
+});
 
 function add(num)
 {
@@ -97,9 +138,34 @@ function add(num)
     setupDragula();
 }
 
-function addNested()
+function addNested(num)
 {
-    let elem= '<div class="item">Opakuj <input type="number" class="num"  name="quantity" min="1" max="10" value="5">krát <div class="nested"></div></div>';
+    let elem;
+    if(num == 1) {
+        elem = '<div class="for">Opakuj <input type="number" class="num"  name="quantity" min="1" max="10" value="3">krát <div class="nested"></div></div>';
+    }
+    else if(num == 2){
+        elem = '<div class="while">Dokud ' +
+        '<select class="sel" name="dokud">' +
+        '<option value="obstacle">Překážka</option>' +
+        '<option value="north">Sever</option>' +
+        '<option value="south">Jih</option>' +
+        '<option value="west">Západ</option>' +
+        '<option value="east">Východ</option>' +
+        '</select>' +
+        ' <div class="nested"></div></div>';
+    }
+    else if(num == 3){
+        elem = '<div class="if">Pokud ' +
+        '<select class="sel" name="dokud">' +
+        '<option value="obstacle">Překážka</option>' +
+        '<option value="north">Sever</option>' +
+        '<option value="south">Jih</option>' +
+        '<option value="west">Západ</option>' +
+        '<option value="east">Východ</option>' +
+        '</select>' +
+        ' <div class="nested"></div></div>';
+    }
     cont.innerHTML += elem;
     setupDragula();
 }

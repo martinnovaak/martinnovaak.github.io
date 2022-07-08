@@ -1,5 +1,6 @@
 #container {
     position: absolute;
+    top: 5%;
     left: 22.5%;
     width: 70%;
     margin: 0 auto;
@@ -8,6 +9,7 @@
 
 #header, #cont {
     text-align: center;
+    padding: 5px;
 }
 
 #header label{
@@ -20,8 +22,20 @@
     background-color: orange;
 }
 
-.item{
+.for, .while{
     background-color: blueviolet;
+}
+
+.if{
+    background-color: coral;
+}
+
+.for input {
+    font-size: 3vh;
+    margin-bottom: 2vh;
+    margin-left: 2vh;
+    background-color: darkred;
+    width: 10%;
 }
 
 .p {
@@ -55,15 +69,33 @@
 #send{
     position: fixed;
     bottom: 0;
-    left: 45%;
-    width: 20%;
+    left: 30%;
+    width: 25%;
     height: 10%;
     background-color: darkkhaki;
     align-items: center;
     display: flex;
 }
 
-#send label{
+#delete{
+    position: fixed;
+    bottom: 0;
+    left: 60%;
+    width: 25%;
+    height: 10%;
+    background-color: chocolate;
+    align-items: center;
+    display: flex;
+}
+
+label{
     margin:0 auto;
     font-size: 5vh;
+}
+
+.sel{
+    background-color: darkred;
+    font-size: 3vh;
+    margin-bottom: 2vh;
+    margin-left: 2vh;
 }

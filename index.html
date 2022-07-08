@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link rel="stylesheet" type="text/css" href="./dragula.css">
     <link rel="stylesheet" type="text/css" href="./sidenav.css">
-    <title>Document</title>
+    <title>Příkazy</title>
 </head>
 <body>
 <div id="mySidenav" class="sidenav">
@@ -33,14 +33,20 @@
             <li> <a href="javascript:add(12)">Rychle</a> </li>
             <li> <a href="javascript:add(13)">Pomalu</a> </li>
         </ul></li>
-        <li><a href="javascript:hideAndShow(4)">Cyklus</a></li>
+        <li><a href="javascript:hideAndShow(4)">Podmínka</a></li>
+        <li><ul id="podminka">
+            <li> <a href="javascript:addNested(3)">Pokud</a> </li>
+        </ul></li>
+        <li><a href="javascript:hideAndShow(5)">Cyklus</a></li>
         <li> <ul id="cyklus">
-            <li><a href="javascript:addNested()">Opakuj</a></li>
+            <li><a href="javascript:addNested(1)">Opakuj</a></li>
+            <li><a href="javascript:addNested(2)">Dokud</a></li>
         </ul></li>
     </ul>
 </div>
 
 <div  id="container">
+    <p id="bar"></p>
     <div id="header"><label>PŘÍKAZY</label></div>
     <div id="cont" class="nested">
 
@@ -49,8 +55,11 @@
 
 <div id="send">
     <label>Odešli</label>
-    <p id="par"></p>
 </div>
+<div id="delete">
+    <label>Vyčisti</label>
+</div>
+
     <script src="dragula.js"></script>
     <script src="script.js"></script>
 </body>
