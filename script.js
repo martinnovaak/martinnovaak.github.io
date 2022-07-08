@@ -5,15 +5,7 @@ function setupDragula(){
     drake1 =  dragula([].slice.apply(document.querySelectorAll('.nested')),{removeOnSpill: true});
 }
 
-setupDragula();
-
 let cont = document.getElementById("cont");
-
-let deletebutton = document.getElementById("delete")
-
-deletebutton.addEventListener("click", function() {
-    cont.innerHTML = '';
-});
 
 function add(num)
 {
@@ -187,3 +179,9 @@ function hideAndShow(num)
         element.style.display = "none";
     }
 }
+
+let deletebutton = document.getElementById("delete")
+
+deletebutton.addEventListener("click", function() {
+    cont.innerHTML = '';
+});
