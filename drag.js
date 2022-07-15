@@ -13,7 +13,7 @@ function add(num)
     if (num === 1)
         elem =  '<div class="k p"> KROK </div>';
     else if (num === 2)
-        elem =  '<div class="l t"> VLEVO-VBOK </div>';
+        elem =  '<div class="l t"> VPRAVO-VBOK </div>';
     cont.innerHTML += elem;
     setupDragula();
 }
@@ -21,12 +21,12 @@ function add(num)
 function addNested(num)
 {
     let elem;
-    if(num == 1) {
+    if(num === 1) {
         elem = '<div class="for">OPAKUJ ' +
         '<input type="number" class="num"  name="quantity" min="1" max="10" value="3">krát' +
         '<div class="nested"></div></div>';
     }
-    else if(num == 2){
+    else if(num === 2){
         elem = '<div class="while">DOKUD ' +
         '<select class="sel" name="dokud">' +
         '<option value="obstacle">PŘEKÁŽKA</option>' +
@@ -36,7 +36,7 @@ function addNested(num)
         '<option value="east">VÝCHOD</option>' +
         '</select> <div class="nested"></div></div>';
     }
-    else if(num == 3){
+    else if(num === 3){
         elem = '<div class="if">KDYŽ ' +
         '<select class="sel" name="dokud">' +
         '<option value="obstacle">Překážka</option>' +
@@ -113,9 +113,9 @@ function rec(element)
     return s;
 }
 
-let sendbutton = document.getElementById("send");
+let send_button = document.getElementById("send");
 
-sendbutton.addEventListener("click", function count_()
+send_button.addEventListener("click", function count_()
 {
     let s = "";
     let nodes = document.getElementById('cont');
@@ -123,8 +123,8 @@ sendbutton.addEventListener("click", function count_()
     g(s);
 });
 
-let deletebutton = document.getElementById("delete")
+let delete_button = document.getElementById("delete")
 
-deletebutton.addEventListener("click", function() {
+delete_button.addEventListener("click", function() {
     cont.innerHTML = '';
 });
