@@ -1,0 +1,52 @@
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="./sidenav.css">
+    <script src="https://unpkg.com/konva@8/konva.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.3/dragula.js'></script>
+    <title>Příkazy</title>
+</head>
+<body>
+<div id="mySidenav" class="sidenav">
+    <ul>
+        <li><a href="javascript:add(1)">KROK</a></li>
+        <li><a href="javascript:add(2)">VLEVO-VBOK</a></li>
+        <li><a href="javascript:addNested(3)">KDYŽ</a></li>
+        <li><a href="javascript:addNested(1)">OPAKUJ</a></li>
+        <li><a href="javascript:addNested(2)">DOKUD</a></li>
+    </ul>
+</div>
+
+<div  id="container">
+    <p id="bar"></p>
+    <div id="header"><label>PŘÍKAZY</label></div>
+    <div id="cont" class="nested">
+    </div>
+</div>
+
+<div id="canvas">
+    <div id="konva-holder"></div>
+</div>
+
+<div id="send">
+    <label>Odešli</label>
+</div>
+<div id="delete">
+    <label>Vyčisti</label>
+</div>
+<div id="save">
+    <label>Ulož příkaz</label>
+</div>
+    <script src="drag.js"></script>
+    <script src="kanvas.js"></script>
+    <script>
+        createCanvas();
+        window.onresize = () => {
+            createCanvas();
+        };
+    </script>
+</body>
+</html>
