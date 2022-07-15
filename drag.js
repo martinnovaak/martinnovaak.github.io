@@ -11,9 +11,9 @@ function add(num)
 {
     let elem;
     if (num === 1)
-        elem =  '<div class="1 p"> KROK </div>';
+        elem =  '<div class="k p"> KROK </div>';
     else if (num === 2)
-        elem =  '<div class="2 t"> VLEVO-VBOK </div>';
+        elem =  '<div class="l t"> VLEVO-VBOK </div>';
     cont.innerHTML += elem;
     setupDragula();
 }
@@ -120,7 +120,7 @@ sendbutton.addEventListener("click", function count_()
     let s = "";
     let nodes = document.getElementById('cont');
     s += rec(nodes);
-    document.getElementById("bar").innerHTML = s;
+    g(s);
 });
 
 let deletebutton = document.getElementById("delete")
