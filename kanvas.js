@@ -1,5 +1,5 @@
-var w, h, platno, c, r, posX = 0, posY = 0;
-var robot, star;
+let w, h, platno, c, r, posX = 0, posY = 0;
+let robot, star;
 
 platno = document.getElementById("canvas")
 
@@ -15,7 +15,6 @@ function createCanvas() {
         height: 1.04 * h,
     });
 
-// then create layer
     var layer = new Konva.Layer();
     stage.add(layer);
 
@@ -63,10 +62,8 @@ function createCanvas() {
     layer.draw();
 }
 
-
 let ok = true;
-var i;
-var command;
+let i, command;
 
 function g(es){
     if (ok){
@@ -78,7 +75,7 @@ function g(es){
 }
 
 function go(){
-    if (posX == c - 1 && posY == r - 1) {
+    if (posX === c - 1 && posY === r - 1) {
         star.destroy();
     }
     if (i < command.length){
@@ -94,26 +91,26 @@ function make(a) {
     var k,l,rot;
     rot = robot.rotation();
     if(a === 'k') {
-        if (rot%360 == 0) {
+        if (rot%360 === 0) {
             k = 0;
-            (posY == r - 1) ? l = 0 : (l = h/r, posY++) ;
+            (posY === r - 1) ? l = 0 : (l = h/r, posY++) ;
         }
-        else if(rot%360 == 90) {
-            (posX == 0) ? k = 0 : (k = -w / c, posX--);
+        else if(rot%360 === 90) {
+            (posX === 0) ? k = 0 : (k = -w / c, posX--);
             l = 0;
         }
-        else if(rot%360 == 180) {
+        else if(rot%360 === 180) {
             k = 0;
-            (posY == 0) ? l = 0 : (l = -h/r, posY--) ;
+            (posY === 0) ? l = 0 : (l = -h/r, posY--) ;
         }
-        else if (rot%360 == 270) {
-            (posX == c - 1) ? k = 0 : (k = w / c, posX++);
+        else if (rot%360 === 270) {
+            (posX === c - 1) ? k = 0 : (k = w / c, posX++);
             l = 0;
         }
     } else if (a === 'l'){
         k = 0;
         l = 0;
-        rot += 90;
+        rot -= 90;
     }
     new Konva.Tween({
         node: robot,
@@ -121,6 +118,6 @@ function make(a) {
         x: robot.x() + k,
         y: robot.y() + l,
         rotation: rot,
-        onFinish: function(){go();},
+        onFinish: ()=>{go();},
     }).play();
 }
