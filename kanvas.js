@@ -110,7 +110,7 @@ function make(a) {
     } else if (a === 'l'){
         k = 0;
         l = 0;
-        rot -= 90;
+        rot += 90;
     }
     new Konva.Tween({
         node: robot,
