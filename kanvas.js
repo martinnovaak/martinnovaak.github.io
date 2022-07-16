@@ -1,12 +1,12 @@
-let w, h, platno, c, r, posX = 0, posY = 0;
+let w, h, c, r, posX = 0, posY = 0;
 let robot, star;
 
-platno = document.getElementById("canvas")
+let platno = document.getElementById("konva-holder")
 
 function createCanvas() {
     w = platno.offsetWidth;
     h = platno.offsetHeight;
-    r = 5;
+    r = 6;
     c = 6;
 
     var stage = new Konva.Stage({
@@ -18,8 +18,8 @@ function createCanvas() {
     var layer = new Konva.Layer();
     stage.add(layer);
 
-    for (i = 0; i < c; i++) {
-        for (j = 0; j < r; j++) {
+    for (let i = 0; i < c; i++) {
+        for (let j = 0; j < r; j++) {
             let rect = new Konva.Rect({
                 x: i * w / c + w / 80,
                 y: j * h / r + w / 80,
@@ -45,25 +45,21 @@ function createCanvas() {
     var imageObj = new Image();
     imageObj.onload = function () {
         robot = new Konva.Image({
-            x: w / 80,
-            y: w / 80+ w/c*0.08,
+            x: w / 80 + w/c*0.47,
+            y: w / 80 + w/c*0.08 + h/r*0.4,
             image: imageObj,
             width: w / c * 0.94,
             height: h / r * 0.80,
+            offsetX: w / c * 0.47,
+            offsetY: h / r * 0.4,
         });
-        robot.offsetX(robot.width() / 2);
-        robot.offsetY(robot.height() / 2);
-        robot.x(robot.x() + robot.width() / 2);
-        robot.y(robot.y() + robot.height() / 2);
-        robot.rotate(270);
         layer.add(robot);
     };
     imageObj.src = 'robot.png';
     layer.draw();
 }
 
-let ok = true;
-let i, command;
+let i, command, ok = true;
 
 function g(es){
     if (ok){
@@ -74,50 +70,100 @@ function g(es){
     }
 }
 
-function go(){
-    if (posX === c - 1 && posY === r - 1) {
-        star.destroy();
-    }
-    if (i < command.length){
-        make(command.charAt(i));
-        i++;
-    }
-    else{
-        ok = true;
+async function go(){
+    while (i < command.length) {
+        if (finish()) break;
+        let ch = command.charAt(i++);
+        if (ch === "}") {
+            break;
+        } else if (ch === "p") {
+            if (!condition(command.charAt(i++), ch)) {
+                ignore();
+            }  else if(command.charAt(i) === "{") {
+                await go();
+            }
+        } else if (ch === "c") {
+            let cond = command.charAt(i++);
+            if (command.charAt(i) === "{") {
+                let j = ++i;
+                if(isNaN(cond)) {
+                    if (!condition(cond, ch)) {
+                        ignore();
+                    } else {
+                        while (condition(cond, "c")) {
+                            i = j;
+                            await go();
+                        }
+                    }
+                } else {
+                    for (let u = 0; u < cond ; u++) {
+                        i = j;
+                        await go();
+                    }
+                }
+            }
+        } else {
+            make(ch);
+            await new Promise(resolve => setTimeout(resolve, 600));
+        }
+        if (finish()) {
+            star.destroy();
+            ok = true;
+        }
     }
 }
 
+function finish(){
+    return posX === c - 1 && posY === r - 1;
+}
+
+function ignore(){
+    while(command.charAt(i) !== "}") {
+        if (command.charAt(i) === "{"){
+            i++;
+            ignore();
+        } i++;
+    } i++;
+}
+
+function obstacle(angle){
+    return (angle === 0 && posY === r - 1) || (angle === 90 && posX === 0) || (angle === 180 && posY === 0) || (angle === 270 && posX === c - 1)
+}
+
+function condition(cond, sender){
+    var res, angle = robot.rotation() % 360;
+    if(cond === "o") res = obstacle(angle);
+    else if(cond === "n") res = angle === 180;
+    else if(cond === "s") res = angle === 0;
+    else if(cond === "e") res = angle === 270;
+    else if(cond === "w") res = angle === 90;
+    return (sender === "c")? !res : res;
+}
+
 function make(a) {
-    var k,l,rot;
-    rot = robot.rotation();
-    if(a === 'k') {
-        if (rot%360 === 0) {
-            k = 0;
-            (posY === r - 1) ? l = 0 : (l = h/r, posY++) ;
-        }
-        else if(rot%360 === 90) {
-            (posX === 0) ? k = 0 : (k = -w / c, posX--);
-            l = 0;
-        }
-        else if(rot%360 === 180) {
-            k = 0;
-            (posY === 0) ? l = 0 : (l = -h/r, posY--) ;
-        }
-        else if (rot%360 === 270) {
-            (posX === c - 1) ? k = 0 : (k = w / c, posX++);
-            l = 0;
+    var distanceX = 0,distanceY = 0, rot = robot.rotation(), angle = rot % 360;
+    if(a === 'k' && !obstacle(angle)) {
+        if (angle === 0) {  // JIH
+            distanceY = h/r;
+            posY++;
+        } else if(angle === 90) {   // ZÁPAD
+            distanceX = -w / c;
+            posX--;
+        } else if(angle === 180) {  // SEVER
+            distanceY = -h/r;
+            posY--;
+        } else if (angle === 270) { // VÝCHOD
+            distanceX = w / c
+            posX++;
         }
     } else if (a === 'l'){
-        k = 0;
-        l = 0;
         rot += 90;
     }
     new Konva.Tween({
         node: robot,
         duration: 0.5,
-        x: robot.x() + k,
-        y: robot.y() + l,
+        x: robot.x() + distanceX,
+        y: robot.y() + distanceY,
         rotation: rot,
-        onFinish: ()=>{go();},
     }).play();
 }

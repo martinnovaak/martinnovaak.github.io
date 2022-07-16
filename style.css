@@ -107,7 +107,7 @@ label{
     margin-left: 2vh;
 }
 
-#canvas {
+#konva-holder {
     position: fixed;
     top: 2%;
     left: 58%;
