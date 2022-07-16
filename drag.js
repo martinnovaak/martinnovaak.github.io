@@ -69,7 +69,6 @@ function rec(element) {
 document.getElementById("send").addEventListener("click", function count_() {
     let nodes = document.getElementById('cont');
     let s = rec(nodes);
-    //document.getElementById("bar").innerHTML = s;
     g(s);
 });
 

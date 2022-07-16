@@ -59,13 +59,14 @@ function createCanvas() {
     layer.draw();
 }
 
-let i, command, ok = true;
+let i, command, steps, ok = true;
 
 function g(es){
     if (ok){
         command = es;
         ok = false;
         i = 0;
+        steps = 0;
         go();
     }
 }
@@ -109,8 +110,17 @@ async function go(){
         if (finish()) {
             star.destroy();
             ok = true;
+            success();
         }
     }
+}
+
+function success(){
+    Swal.fire(
+        'Dobrá práce!',
+        'Vyřešeno za ' + steps + ' kroků!',
+        'success'
+    )
 }
 
 function finish(){
@@ -159,6 +169,7 @@ function make(a) {
     } else if (a === 'l'){
         rot += 90;
     }
+    steps++;
     new Konva.Tween({
         node: robot,
         duration: 0.5,
