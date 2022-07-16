@@ -5,6 +5,3 @@
 <li>Konva</li>
 </ul>
 
-<ul> CSS knihovny:
-<li>Bootstrap</li>
-</ul>
