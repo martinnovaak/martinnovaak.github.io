@@ -8,7 +8,3 @@
 <ul> CSS knihovny:
 <li>Bootstrap</li>
 </ul>
-
-<ul> Go knihovny:
-<li>Chi</li>
-</ul>
