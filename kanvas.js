@@ -164,7 +164,7 @@ function obstacle(angle){
         return true;
     }
     for(let index = 0; index < obsts; index++){
-        if (((angle === 0 && posY === py[index] - 1) && posX === px[index]) || ((angle === 90 && posX === px + 1) && posY === py[index]) || ((angle === 180 && posY === py[index] + 1) && posX === px[index]) || ((angle === 270 && posX === px[index] - 1) && posY === py[index]))
+        if (((angle === 0 && posY === py[index] - 1) && posX === px[index]) || ((angle === 90 && posX === px[index] + 1) && posY === py[index]) || ((angle === 180 && posY === py[index] + 1) && posX === px[index]) || ((angle === 270 && posX === px[index] - 1) && posY === py[index]))
             return true;
     }
     return false;
