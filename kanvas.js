@@ -97,9 +97,12 @@ async function go(){
         if (ch === "}") {
             break;
         } else if (ch === "p") {
-            if (!condition(command.charAt(i++), ch)) {
-                ignore();
-            }  else if(command.charAt(i) === "{") {
+            let cond = command.charAt(i++);
+            if(command.charAt(i) === "{") {
+                if (!condition(cond, "p")) {
+                    i++;
+                    ignore();
+                }
                 await go();
             }
         } else if (ch === "c") {
@@ -145,12 +148,15 @@ function finish(){
 }
 
 function ignore(){
-    while(command.charAt(i) !== "}") {
-        if (command.charAt(i) === "{"){
-            i++;
-            ignore();
-        } i++;
-    } i++;
+    let exp = 1;
+    let found = 0;
+    while(found !== exp){
+        if(command.charAt(i) === "{")
+            exp++;
+        else if(command.charAt(i) === "}")
+            found++;
+        i++;
+    }
 }
 
 function obstacle(angle){
