@@ -76,7 +76,7 @@ function rec(element) {
 
 document.getElementById("send").addEventListener("click", function count_() { g(rec(cont)); });
 
-document.getElementById("delete").addEventListener("click", () => { cont.innerHTML = ''; createCanvas();});
+document.getElementById("delete").addEventListener("click", () => { cont.innerHTML = '';});
 
 document.getElementById("save").addEventListener("click", async () => {
     var command = rec(cont), cancel = false, name = "";
