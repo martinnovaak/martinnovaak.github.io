@@ -86,7 +86,7 @@ function g(es){
         command = es;
         ok = false;
         i = 0;
-        go();
+        go().then(() => {ok = true;})
     }
 }
 
@@ -103,7 +103,7 @@ async function go(){
                     i++;
                     ignore();
                 }
-                await go();
+                go();
             }
         } else if (ch === "c") {
             let cond = command.charAt(i++);
@@ -126,8 +126,8 @@ async function go(){
                 }
             }
         } else {
-            make(ch);
-            await new Promise(resolve => setTimeout(resolve, 520));
+            if(make(ch));
+                await new Promise(resolve => setTimeout(resolve, 260));
         }
     }
     if (finish()) {
@@ -139,7 +139,6 @@ async function go(){
         ).then((result) => {steps=0;})
         return;
     }
-    ok = true;
 }
 
 
@@ -182,7 +181,8 @@ function condition(cond, sender){
 
 function make(a) {
     var distanceX = 0, distanceY = 0, rot = robot.rotation(), angle = rot % 360;
-    if (a === 'k' && !obstacle(angle)) {
+    if (a === 'k') {
+        if (obstacle(angle)) return false;
         if (angle === 0) {  // JIH
             distanceY = h / r;
             posY++;
@@ -202,9 +202,10 @@ function make(a) {
     steps++;
     new Konva.Tween({
         node: robot,
-        duration: 0.5,
+        duration: 0.25,
         x: robot.x() + distanceX,
         y: robot.y() + distanceY,
         rotation: rot,
     }).play();
+    return true;
 }
