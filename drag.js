@@ -42,6 +42,11 @@ function addNested(num) {
     setupDragula();
 }
 
+function addCustomCommand(a){
+    cont.insertAdjacentHTML("beforeend", '<div class="'+ a.className + ' red">' + a.innerHTML + '</div>');
+    setupDragula();
+}
+
 function rec(element) {
     let s = "", node;
     let nodes = element.children;
@@ -60,16 +65,56 @@ function rec(element) {
             s += rec(nodes[i]);
         } else if(node === "sel") {
             s += nodes[i].value[0]; // n - sever, s - jih, w - západ, e - východ, o - překážka
-        } else
-            s += node[0];
+        } else {
+            let i = 0;
+            while(node[i] !== " ")
+                s += node[i++];
+        }
     }
     return s;
 }
 
-document.getElementById("send").addEventListener("click", function count_() {
-    let nodes = document.getElementById('cont');
-    let s = rec(nodes);
-    g(s);
-});
+document.getElementById("send").addEventListener("click", function count_() { g(rec(cont)); });
 
 document.getElementById("delete").addEventListener("click", () => { cont.innerHTML = ''; createCanvas();});
+
+document.getElementById("save").addEventListener("click", async () => {
+    var command = rec(cont), cancel = false, name = "";
+    if (command === "") {
+        errorAlert('Nelze uložit prázdný příkaz!');
+        return;
+    }
+
+    await Swal.fire({
+        title: "Nový příkaz",
+        text: "Zadejte název příkazu:",
+        input: 'text',
+        showCancelButton: true
+    }).then((result) => {
+        if (result.value) {
+            name = result.value.toUpperCase();
+        } else if (result.dismiss === Swal.DismissReason.cancel || result.dismiss === Swal.DismissReason.backdrop){
+            cancel = true;
+        }
+    });
+
+    if(cancel) return;
+
+    if(name !== "") {
+        var elem = '<li><a onclick="javascript:addCustomCommand(this)" class="'+ command +'">' + name + '</a></li>';
+        document.getElementById("commands").insertAdjacentHTML("beforeend", elem);
+        cont.innerHTML = '';
+        cont.insertAdjacentHTML("beforeend", '<div class="'+ command + ' red">' + name + '</div>');
+        setupDragula();
+    } else {
+        errorAlert('Nezadali jste jméno příkazu!')
+    }
+})
+
+function errorAlert(text){
+    Swal.fire({
+        icon: 'error',
+        title: 'Chyba při ukládání příkazu',
+        text: text,
+    })
+}

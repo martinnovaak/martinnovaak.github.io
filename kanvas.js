@@ -52,6 +52,7 @@ function createCanvas() {
             height: h / r * 0.80,
             offsetX: w / c * 0.47,
             offsetY: h / r * 0.4,
+            rotation: 270,
         });
         layer.add(robot);
     };
